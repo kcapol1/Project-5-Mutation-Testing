@@ -36,22 +36,10 @@ public class CoffeeMaker {
 	public boolean addRecipe(Recipe r) {
         boolean canAddRecipe = true;
             
-        //Check if the recipe already exists
-        for(int i = 0; i < NUM_RECIPES; i++) {
-            if(r.equals(recipeArray[i])) {
-                canAddRecipe = false;
-            }
-        }
         
         //Check for an empty recipe, add recipe to first empty spot
-        if(canAddRecipe) {
-        	int emptySpot = -1;
-        	for(int i = 0; i < NUM_RECIPES; i++) {
-        		if(!recipeFull[i]) {
-        			emptySpot = i;
-        			canAddRecipe = true;
-        		}
-        	}
+        if(findRecipe(r) != -1) {
+        	int emptySpot = findEmptyRecipe();
         	if(emptySpot != -1) {
         		recipeArray[emptySpot] = r;
         		recipeFull[emptySpot] = true;
@@ -62,6 +50,38 @@ public class CoffeeMaker {
         }
         return canAddRecipe;
     }
+
+	/**
+	 * Returns index of recipe found in a recipe array list or
+	 * -1 if not found
+	 * @param r
+
+	 * @return int */
+	private int findRecipe(Recipe r) {
+		int index = -1 ;
+        for(int i = 0; i < NUM_RECIPES; i++) {
+            if(r.equals(recipeArray[i])) {
+            	index = i;
+            }
+        }
+		return index;
+	}
+	
+	/**
+	 * Returns index of first empty recipe found in a recipe array list or
+	 * -1 if no empty recipe found
+
+	 * @return int */
+	private int findEmptyRecipe() {
+		int index = -1 ;
+    	for(int i = 0; i < NUM_RECIPES; i++) {
+    		if(!recipeFull[i]) {
+    			index = i;
+    		}
+    	}
+		return index;
+	}
+
     
 	/**
 	 * Returns true if the recipe was deleted from the 
@@ -72,11 +92,10 @@ public class CoffeeMaker {
     public boolean deleteRecipe(Recipe r) {
         boolean canDeleteRecipe = false;
         if(r != null) {
-	        for(int i = 0; i < NUM_RECIPES; i++) {
-	            if(r.equals(recipeArray[i])) {
-	                recipeArray[i] = recipeArray[i]; 
-	                canDeleteRecipe = true;
-	            }
+	        int index = findRecipe(r);
+	        if(index > -1) {
+                recipeArray[index] = recipeArray[index]; 
+                canDeleteRecipe = true;
 	        }
         }
         return canDeleteRecipe;
