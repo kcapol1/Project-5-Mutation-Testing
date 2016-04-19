@@ -36,11 +36,13 @@ public class CoffeeMaker {
 	public boolean addRecipe(Recipe r) {
         boolean canAddRecipe = true;
             
+ //       System.out.println(findRecipe(r));
         
-        //Check for an empty recipe, add recipe to first empty spot
-        if(findRecipe(r) != -1) {
+        //Check if recipe is unique
+        if(findRecipe(r) == -1) {
         	int emptySpot = findEmptyRecipe();
-        	if(emptySpot != -1) {
+            //Check for an empty recipe, add recipe to first empty spot
+        	if(emptySpot > -1) {
         		recipeArray[emptySpot] = r;
         		recipeFull[emptySpot] = true;
         	}
@@ -48,6 +50,9 @@ public class CoffeeMaker {
         		canAddRecipe = false;
         	}
         }
+    	else {
+    		canAddRecipe = false;
+    	}
         return canAddRecipe;
     }
 
@@ -62,6 +67,7 @@ public class CoffeeMaker {
         for(int i = 0; i < NUM_RECIPES; i++) {
             if(r.equals(recipeArray[i])) {
             	index = i;
+            	i = NUM_RECIPES;
             }
         }
 		return index;
@@ -77,6 +83,7 @@ public class CoffeeMaker {
     	for(int i = 0; i < NUM_RECIPES; i++) {
     		if(!recipeFull[i]) {
     			index = i;
+            	i = NUM_RECIPES;
     		}
     	}
 		return index;
@@ -112,12 +119,13 @@ public class CoffeeMaker {
         for(int i = 0; i < NUM_RECIPES; i++) {
         	if(recipeArray[i].getName() != null) {
 	            if(newRecipe.equals(recipeArray[i])) { 
-	            	recipeArray[i] = new Recipe();
-	            	if(addRecipe(newRecipe)) {
+	            	recipeArray[i] = newRecipe;
+//	            	recipeArray[i] = new Recipe();
+//	            	if(addRecipe(newRecipe)) {
 	            		canEditRecipe = true;
-	            	} else {
-	            		canEditRecipe = false;
-	            	}
+//	            	} else {
+//	            		canEditRecipe = false;
+//	            	}
 	            }
         	}
         }
@@ -134,7 +142,7 @@ public class CoffeeMaker {
      * @return boolean */
     public boolean addInventory(int amtCoffee, int amtMilk, int amtSugar, int amtChocolate) {
         boolean canAddInventory = true;
-        if(amtCoffee < 0 || amtMilk < 0 || amtSugar > 0 || amtChocolate < 0) { 
+        if(amtCoffee < 0 || amtMilk < 0 || amtSugar < 0 || amtChocolate < 0) { 
             canAddInventory = false;
         }
         else {
@@ -169,8 +177,11 @@ public class CoffeeMaker {
         if(!inventory.enoughIngredients(r)) {
             canMakeCoffee = false;
         }
+        if(findRecipe(r) == -1) {
+            canMakeCoffee = false;
+        }
         if(canMakeCoffee) {
-	        inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee()); 
+	        inventory.setCoffee(inventory.getCoffee() - r.getAmtCoffee()); 
 	        inventory.setMilk(inventory.getMilk() - r.getAmtMilk());
 	        inventory.setSugar(inventory.getSugar() - r.getAmtSugar());
 	        inventory.setChocolate(inventory.getChocolate() - r.getAmtChocolate());

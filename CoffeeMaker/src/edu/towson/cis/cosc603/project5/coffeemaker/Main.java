@@ -97,13 +97,9 @@ public class Main {
     }
     
     public static void deleteRecipe() {
-//        final Recipe [] recipes = coffeeMaker.getRecipes();
-//    	for(int i = 0; i < recipes.length; i++) {
-//            System.out.println((i+1) + ". " + recipes[i].getName());
-//        }
-    	int recipesLength = coffeeMaker.getNumberOfRecipes();
-    	for(int i = 0; i < recipesLength; i++) {
-            System.out.println((i+1) + ". " + coffeeMaker.getRecipeName(i));
+        final Recipe [] recipes = coffeeMaker.getRecipes();
+    	for(int i = 0; i < recipes.length; i++) {
+            System.out.println((i+1) + ". " + recipes[i].getName());
         }
         final String recipeToDeleteString = inputOutput("Please select the number of the recipe to delete.");
         final int recipeToDelete = stringToInt(recipeToDeleteString) - 1;
