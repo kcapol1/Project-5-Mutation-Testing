@@ -29,7 +29,7 @@ public class Recipe {
     		this.amtChocolate = amtChocolate;
     	}
     	else {
-    		this.amtChocolate = 0;
+//    		this.amtChocolate = 0;
     	}
     }
     /**
@@ -48,7 +48,7 @@ public class Recipe {
     		this.amtCoffee = amtCoffee;
     	}
     	else {
-    		this.amtCoffee = 0;
+//    		this.amtCoffee = 0;
     	}
     }
     /**
@@ -67,7 +67,7 @@ public class Recipe {
     		this.amtMilk = amtMilk;
     	}
     	else {
-    		this.amtMilk = 0;
+//    		this.amtMilk = 0;
     	}
     }
     /**
@@ -86,7 +86,7 @@ public class Recipe {
     		this.amtSugar = amtSugar;
     	}
     	else {
-    		this.amtSugar = 0;
+//    		this.amtSugar = 0;
     	}
     }
     /**
@@ -119,7 +119,7 @@ public class Recipe {
     		this.price = price;
     	}
     	else {
-    		this.price = 0;
+//    		this.price = 0;
     	}
     } 
     /**
