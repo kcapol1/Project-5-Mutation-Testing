@@ -4,14 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// TODO: Auto-generated Javadoc
 /**
- * Starts the console UI for the CoffeeMaker
+ * Starts the console UI for the CoffeeMaker.
+ *
  * @author Josh
  * @version $Revision: 1.0 $
  */
 public class Main {
+    
+    /** The coffee maker. */
     private static CoffeeMaker coffeeMaker;
 
+    /**
+     * Main menu.
+     */
     public static void mainMenu() {
         System.out.println();
         System.out.println("1. Add a recipe");
@@ -35,6 +42,10 @@ public class Main {
         if(userInput == 6) makeCoffee();
         if(userInput == 0) System.exit(0);
     }
+	
+	/**
+	 * Adds the recipe.
+	 */
 	public static void addRecipe() {
 	    //Read in recipe name
 		final String name = inputOutput("Please enter the recipe name: ");
@@ -96,6 +107,9 @@ public class Main {
 	    mainMenu();
     }
     
+    /**
+     * Delete recipe.
+     */
     public static void deleteRecipe() {
         final Recipe [] recipes = coffeeMaker.getRecipes();
     	for(int i = 0; i < recipes.length; i++) {
@@ -119,6 +133,9 @@ public class Main {
         mainMenu();
     }
     
+    /**
+     * Edits the recipe.
+     */
     public static void editRecipe() {
         final Recipe [] recipes = coffeeMaker.getRecipes();
         for(int i = 0; i < recipes.length; i++) {
@@ -191,6 +208,9 @@ public class Main {
         mainMenu();
     }
     
+    /**
+     * Adds the inventory.
+     */
     public static void addInventory() {
 	    //Read in amt coffee
 	    String coffeeString = inputOutput("Please enter the units of coffee to add: ");
@@ -224,6 +244,9 @@ public class Main {
         mainMenu();
     }
     
+    /**
+     * Check inventory.
+     */
     public static void checkInventory() {
         Inventory inventory = coffeeMaker.checkInventory();
 //        System.out.println(inventory.toString());
@@ -238,6 +261,9 @@ public class Main {
         mainMenu();
     }
     
+    /**
+     * Make coffee.
+     */
     public static void makeCoffee() {
         Recipe [] recipes = coffeeMaker.getRecipes();
         for(int i = 0; i < recipes.length; i++) {

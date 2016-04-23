@@ -1,17 +1,29 @@
 package edu.towson.cis.cosc603.project5.coffeemaker;
 
+// TODO: Auto-generated Javadoc
 /**
- * Inventory for the coffee maker
+ * Inventory for the coffee maker.
+ *
  * @author Josh
  * @version $Revision: 1.0 $
  */
 public class Inventory {
     
+    /** The coffee. */
     private static int coffee;
+    
+    /** The milk. */
     private static int milk;
+    
+    /** The sugar. */
     private static int sugar;
+    
+    /** The chocolate. */
     private static int chocolate;
     
+    /**
+     * Instantiates a new inventory.
+     */
     public Inventory() {
     	setCoffee(15);
     	setMilk(15);
@@ -100,9 +112,10 @@ public class Inventory {
     /**
      * Returns true if there are enough ingredients to make
      * the beverage.
-     * @param r
-    
-     * @return boolean */
+     *
+     * @param r the r
+     * @return boolean
+     */
     public boolean enoughIngredients(Recipe r) {
         boolean isEnough = true;
         if(Inventory.coffee < r.getAmtCoffee()) {

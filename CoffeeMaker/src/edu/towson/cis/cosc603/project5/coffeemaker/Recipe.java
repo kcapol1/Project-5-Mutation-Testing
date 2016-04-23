@@ -1,16 +1,30 @@
 package edu.towson.cis.cosc603.project5.coffeemaker;
 
+// TODO: Auto-generated Javadoc
 /**
- * Recipe object for the coffee maker
+ * Recipe object for the coffee maker.
+ *
  * @author Josh
  * @version $Revision: 1.0 $
  */
 public class Recipe {
+    
+    /** The name. */
     private String name;
+    
+    /** The price. */
     private int price;
+    
+    /** The amt coffee. */
     private int amtCoffee;
+    
+    /** The amt milk. */
     private int amtMilk;
+    
+    /** The amt sugar. */
     private int amtSugar;
+    
+    /** The amt chocolate. */
     private int amtChocolate;
     
     /**

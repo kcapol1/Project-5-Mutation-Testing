@@ -13,9 +13,6 @@ public class CoffeeMakerTest extends TestCase {
 	/** The cm. */
 	private CoffeeMaker cm;
 	
-	/** The i. */
-	private Inventory i;
-	
 	/** The r1. */
 	private Recipe r1;
 	
@@ -36,7 +33,6 @@ public class CoffeeMakerTest extends TestCase {
 	 */
 	public void setUp() {
 		cm = new CoffeeMaker();
-		i = cm.checkInventory();
 
 		r1 = new Recipe();
 		r1.setName("Coffee");
@@ -265,140 +261,5 @@ public class CoffeeMakerTest extends TestCase {
 		assertEquals(0.00,cm.checkInventory().getMilk(), 0.001);
 		assertEquals(0.00,cm.checkInventory().getSugar(), 0.001);
 	}
-
-	/**
-	 * Test setChocolate with negative input.
-	 */
-	public void testSetChocolate() {
-		int chocolate = i.getChocolate();
-		i.setChocolate(-1);
-		assertEquals(chocolate,i.getChocolate(),0.001);
-  	}
 	
-	/**
-	 * Test setCoffee with negative input.
-	 */
-	public void testSetCoffee() {
-		int coffee = i.getCoffee();
-		i.setCoffee(-1);
-		assertEquals(coffee,i.getCoffee(),0.001);
-	}  	
-	
-	/**
-	 * Test setMilk with negative input.
-	 */
-	public void testSetMilk() {
-		int milk = i.getMilk();
-		i.setMilk(-1);
-		assertEquals(milk,i.getMilk(),0.001);
- 	}
-	
-	/**
-	 * Test setSugar with negative input.
-	 */
-	public void testSetSugar() {
-		int sugar = i.getSugar();
-		i.setSugar(-1);
-		assertEquals(sugar,i.getSugar(),0.001);
-	}
-
-	/**
-	 * Test setAmtChocolate with negative input.
-	 */
-	public void testSetAmtChocolate1() {
-		int chocolate = r2.getAmtChocolate();
-		r2.setAmtChocolate(-1);
-		assertEquals(chocolate,r2.getAmtChocolate(),0.001);
-  	}
-	
-	/**
-	 * Test setAmtChocolate with zero (0) value input.
-	 */
-	public void testSetAmtChocolate2() {
-		r2.setAmtChocolate(0);
-		assertEquals(0,r2.getAmtChocolate(),0.001);
-  	}
-	
-	/**
-	 * Test setAmtCoffee with negative input.
-	 */
-	public void testSetAmtCoffee1() {
-		int coffee = r2.getAmtCoffee();
-		r2.setAmtCoffee(-1);
-		assertEquals(coffee,r2.getAmtCoffee(),0.001);
-	}
-
-	/**
-	 * Test setAmtCoffee with zero (0) value input.
-	 */
-	public void testSetAmtCoffee2() {
-		r2.setAmtCoffee(0);
-		assertEquals(0,r2.getAmtCoffee(),0.001);
-	}
-
-	/**
-	 * Test setAmtMilk with negative input.
-	 */
-	public void testSetAmtMilk1() {
-		int milk = r2.getAmtMilk();
-		r2.setAmtMilk(-1);
-		assertEquals(milk,r2.getAmtMilk(),0.001);
-	}
-
-	/**
-	 * Test setAmtMilk with zero (0) value input.
-	 */
-	public void testSetAmtMilk2() {
-		r2.setAmtMilk(0);
-		assertEquals(0,r2.getAmtMilk(),0.001);
-	}
-
-	/**
-	 * Test setAmtSugar with negative input.
-	 */
-	public void testSetAmtSugar1() {
-		int sugar = r2.getAmtSugar();
-		r2.setAmtSugar(-1);
-		assertEquals(sugar,r2.getAmtSugar(),0.001);
-	}
-
-	/**
-	 * Test setAmtSugar with zero (0) value input.
-	 */
-	public void testSetAmtSugar2() {
-		r2.setAmtSugar(0);
-		assertEquals(0,r2.getAmtSugar(),0.001);
-	}
-	
-	/**
-	 * Test setPrice with negative input.
-	 */
-	public void testSetPrice1() {
-		int price = r1.getPrice();
-		r1.setPrice(-1);
-		assertEquals(price,r1.getPrice(),0.001);
-  	}
-	
-	/**
-	 * Test setPrice with zero (0) value input.
-	 */
-	public void testSetPrice2() {
-		r1.setPrice(0);
-		assertEquals(0,r1.getPrice(),0.001);
-  	}
-	
-	/**
-	 * Test toString with expected input.
-	 */
-	public void testToString() {
-		assertEquals("Coffee",r1.toString());
-  	}
-	
-	/**
-	 * Test Equals with null recipe.
-	 */
-	public void testEquals() {
-		Recipe r = new Recipe();
-		assertFalse(r.equals(r1));
-  	}
 }
